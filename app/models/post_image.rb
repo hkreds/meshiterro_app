@@ -3,9 +3,24 @@ class PostImage < ApplicationRecord
   belongs_to :user
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
+
   validates :shop_name, presence:true
   validates :image, presence:true
+
+  # 検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @post_image = PostImage.where("shop_name LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @post_image = PostImage.where("shop_name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @post_image = PostImage.where("shop_name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @post_image = PostImage.where("shop_name LIKE?","%#{word}%")
+    else
+      @post_image = PostImage.all
+    end
+  end
 
   def get_image(width, height)
     unless image.attached?
