@@ -1,4 +1,3 @@
-<h1>User List</h1>
 <table class="table">
   <thead>
       <td>image</td>
@@ -16,8 +15,16 @@
         <% end %>
       </td>
       <td>投稿数:<%= user.post_images.count %></td>
-      <td>フォロー数:<%= user.followings.count %></td>
-      <td>フォロワー数:<%= user.followers.count %></td>
+      <td>フォロー数:
+          <%= link_to user_followings_path(user) do %>
+            <%= user.followings.count %>
+          <% end %>
+      </td>
+      <td>フォロワー数:
+          <%= link_to user_followers_path(user) do %>
+            <%= user.followers.count %>
+          <% end %>
+      </td>
       <td>
         <% if user.id != current_user.id %>
           <%= render "relationships/follow-btn", user: user %>
