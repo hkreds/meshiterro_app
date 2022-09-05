@@ -26,14 +26,12 @@
       <td width="500">
         <%= post_comment.comment %>
       </td>
-      <td>
-        <% if post_comment.user == current_user %>
-          <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete, class: "btn btn-danger" %>
-        <% end %>
+      <td class="comment-destroy">
+        <%= render "post_comments/comment-destroy", post_comment: post_comment %>
       </td>
     </tr>
   <% end %>
 </table>
-<div class="comment-form">
+<div class="comment-form_<% @post_image.id %>">
   <%= render "post_comments/comment-form", post_comment: @post_comment, post_image: @post_image %>
 </div>

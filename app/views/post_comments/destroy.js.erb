@@ -1,2 +1,1 @@
-$(".favorite-btn").html("<%= j(render 'favorites/favorite-btn', post_image: @post_image) %>");
-$(".favorite-btn_<%= @post_image.id %>").html("<%= j(render 'favorites/favorite-btn', post_image: @post_image) %>");
+$(".comment-form_<% @post_image.id %>").html("<%= j(render 'post_comments/comment-form', post_comment: post_comment, post_image: @post_image) %>");
