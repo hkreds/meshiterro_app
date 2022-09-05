@@ -1,37 +1,3 @@
-<table class="table">
-  <thead>
-      <td>image</td>
-      <td>name</td>
-      <td colspan="4"></td>
-    </thead>
-  <% users.each do |user| %>
-    <tbody>
-      <td>
-        <%= image_tag user.get_profile_image(100,100) %>
-      </td>
-      <td>
-        <%= link_to user_path(user.id) do %>
-          <%= user.name %>
-        <% end %>
-      </td>
-      <td>投稿数:<%= user.post_images.count %></td>
-      <td>フォロー数:
-          <%= link_to user_followings_path(user) do %>
-            <%= user.followings.count %>
-          <% end %>
-      </td>
-      <td>フォロワー数:
-          <%= link_to user_followers_path(user) do %>
-            <%= user.followers.count %>
-          <% end %>
-      </td>
-      <td>
-        <% if user.id != current_user.id %>
-          <%= render "relationships/follow-btn", user: user %>
-        <% else %>
-          <%= link_to "プロフィール編集", edit_user_path(user.id) %>
-        <% end %>
-      </td>
-    </tbody>
-  <% end %>
+<table class="table follow">
+  <%= render "relationships/follow", users: @users %>
 </table>
