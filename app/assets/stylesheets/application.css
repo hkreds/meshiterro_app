@@ -31,6 +31,22 @@
   }
 }
 
+.bigmove{
+  animation-name: bigger;
+  animation-duration: 1s;
+  animation-fill-mode:forwards
+}
+
+@keyframes bigger{
+  0%{
+    font-size: 1rem;
+  }
+  100%{
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+}
+
 #back {
   position: fixed;
   right: 20px;

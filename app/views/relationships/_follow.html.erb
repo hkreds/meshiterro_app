@@ -9,7 +9,7 @@
       <%= image_tag user.get_profile_image(100,100) %>
     </td>
     <td>
-      <%= link_to user_path(user.id) do %>
+      <%= link_to user_path(user.id), class: "username" do %>
         <%= user.name %>
       <% end %>
     </td>
